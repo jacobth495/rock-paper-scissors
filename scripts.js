@@ -57,20 +57,21 @@ function playRound(playerSelection, computerSelection) {
 
 function startGame() {
   for (i = 0; i < 3; i++){
-    i = computerScore || playerScore;
+    let i = computerScore;
+    let n = playerScore;
     if (playerSelection == computerSelection) {
       getComputerChoices(playRound(playerSelection, computerSelection));
     }
-    else if (playerScore == 0 || computerScore == 0) {
+    else if (playerScore == 0 , computerScore == 0) {
       getComputerChoices(playRound(playerSelection, computerSelection));
     }
-    else if (playerScore == 1 || computerScore == 1) {
+    else if (playerScore == 1 , computerScore == 1) {
       getComputerChoices(playRound(playerSelection, computerSelection));
     }
-    else if (playerScore == 2 || computerScore == 2) {
+    else if (playerScore == 2 , computerScore == 2) {
       getComputerChoices(playRound(playerSelection, computerSelection));
     }
-    else if (playerScore == 3 || computerScore == 3) {
+    else if (playerScore == 3 , computerScore == 3) {
       console.log("Game", playerScore, computerScore);
     }
   }
