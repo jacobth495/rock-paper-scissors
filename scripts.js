@@ -1,82 +1,56 @@
 let playerScore = 0;
 let computerScore = 0;
 
-let playerSelection = prompt(`Rock Paper or Scissors`).toLowerCase();
-let computerSelection = getComputerChoices();
+let playerSelection; 
+let computerSelection;
 
-let x = playerSelection;
-let y = computerSelection;
-
-
-function getComputerChoices(a,b,c) {
+function getComputerChoices() {
   const x = [`rock`, `paper`, `scissors`]
   const y = x[Math.floor(Math.random() * 3)]
   return y
 }
 
 function playRound(playerSelection, computerSelection) {
-  x = playerSelection;
-  y = computerSelection;
-  if (x == y) {
-    console.log("Tie");
-    console.log(playerScore, computerScore);
-    playerScore++
-    computerScore++;
+  playerSelection = prompt(`Rock Paper or Scissors`).toLowerCase();
+  computerSelection = getComputerChoices();
+  if (playerSelection === computerSelection) {
+    return "Tie";
   }
-  else if(x ===`rock` && y === `scissors`) {
+  if(playerSelection === `rock` && computerSelection === `scissors`) {
     playerScore++;
-    console.log('You win rock beats scissors');
-    console.log(playerScore, computerScore)
+    return 'You win rock beats scissors';
   }
-  else if(x ===`paper` && y === `rock`) {
+  if(playerSelection === `paper` && computerSelection === `rock`) {
     playerScore++;
-    console.log('You win paper beats rock');
-    console.log(playerScore, computerScore)
+    return 'You win paper beats rock';
+    
   }
-  else if (x ===`scissors` && y === `paper`) {
+  if (playerSelection === `scissors` && computerSelection === `paper`) {
     playerScore++;
-    console.log('You win scissors beats paper')
-    console.log(playerScore, computerScore)
+    return 'You win scissors beats paper';
   }
-  else if (y ===`scissors` && x === `paper`){
+  if (computerSelection === `scissors` && playerSelection === `paper`){
     computerScore++;
-    console.log('You lost scissors beats paper')
-    console.log(playerScore, computerScore)
+    return 'You lost scissors beats paper';
   }
-  else if (y ===`rock` && x === `scissors`){
+  if (computerSelection === `rock` && playerSelection === `scissors`){
     computerScore++;
-    console.log('You lost rock beats scissors')
-    console.log(playerScore, computerScore)
+    return 'You lost rock beats scissors';
   }
-  else if (y ===`paper` && x === `rock`){
+  if (computerSelection === `paper` && playerSelection === `rock`){
     computerScore++;
-    console.log('You lost paper beats rock')
-    console.log(playerScore, computerScore)
+    return 'You lost paper beats rock';
   }
 }
 
-function startGame() {
-  for (i = 0; i < 3; i++){
-    let i = computerScore;
-    let n = playerScore;
-    if (playerSelection == computerSelection) {
-      getComputerChoices(playRound(playerSelection, computerSelection));
-    }
-    else if (playerScore == 0 , computerScore == 0) {
-      getComputerChoices(playRound(playerSelection, computerSelection));
-    }
-    else if (playerScore == 1 , computerScore == 1) {
-      getComputerChoices(playRound(playerSelection, computerSelection));
-    }
-    else if (playerScore == 2 , computerScore == 2) {
-      getComputerChoices(playRound(playerSelection, computerSelection));
-    }
-    else if (playerScore == 3 , computerScore == 3) {
-      console.log("Game", playerScore, computerScore);
-    }
+function game() {
+  for (i = 0; i < 5; i++){
+    console.log(playRound())
   }
+  console.log('Player Score ' + playerScore + ' ' + 'Computer Score ' + computerScore);
 }
+
 
 
 //console.log(playRound(playerSelection, computerSelection));
-console.log(startGame(playRound()))
+console.log(game())
